@@ -15,7 +15,8 @@ async function generatePdf(file, options, callback) {
   }
 
   const browser = await puppeteer.launch({
-    args: args
+    headless: true,
+    args: ['--no-sandbox', '--disable-setuid-sandbox'],
   });
   const page = await browser.newPage();
 
@@ -53,7 +54,8 @@ async function generatePdfs(files, options, callback) {
     delete options.args;
   }
   const browser = await puppeteer.launch({
-    args: args
+    headless: true,
+    args: ['--no-sandbox', '--disable-setuid-sandbox'],
   });
   let pdfs = [];
   const page = await browser.newPage();
